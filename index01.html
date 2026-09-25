@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Perfil del alumno</title>
+         <link rel="icon" href="Iconos/logos%20cdmx.png" type="image/png">
+    <style>
+* {
+    /*Para que quede en una pagina estatica se usa: */
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+    .parent {
+    /*Para que ocupe todo el espacio de la pantalla es el width y el height*/    
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /*Si lo pongo por separado puedo manejar la altura de mis filas */    
+    grid-template-rows:  1fr 70px 1fr 1fr 1fr 1fr;;
+    gap: 1px;
+    background-color: #fafbf5;
+}
+
+/* LADO IZQUIERDO — MENU DESPLEGABLE */
+.div10 {
+    grid-column: 1;
+    grid-row: span 6;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+        .logo_ciudad{
+            width: 350px;
+        }
+        
+        .pilares{
+            width: 200px;
+            margin-top: -50px;
+            
+        }
+        .perfil_text{
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 550;
+            color: #cd9e65
+        }
+        summary a{
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 550;
+            color: #b31034
+        }
+        summary a:hover{
+            color: #931631;
+        }
+        
+        li a{
+            padding: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            color: #a19797
+            
+        }
+        li a:hover{
+            color: #cd9e65;
+            font-weight: 600;
+        }
+        /*Es para seleccionar los marcadores que salen de mi summary por eso se usa summary::marker*/
+        summary::marker {
+    color: #cd9e65;
+    font-size: 25px;
+}
+        summary:hover::marker {
+    color: #931631;
+    font-size: 25px;
+}
+        
+        .menu_desplegable ul {
+        list-style: none;
+        }
+        .alumno{
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+        
+        .menu_desplegable{
+            padding: 20px;
+             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .cerrar_sesion{
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 550;
+            color: #931631;
+            margin-top: auto;
+            margin-left: 30%;
+        }
+        .cerrar_sesion:hover{
+            color: #cd9e65
+            
+            
+        }
+        
+/* PLECA SUPERIOR */
+.div11 {
+    /* 2/6 Es la forma abreviada de decir de donde inicia a donde termina el rango de espacio que quiero que ocupe*/
+    grid-column: 2 / 6; 
+    grid-row: 1;
+    
+    /*Aqui hago padre a mi div 11 para centrar elementos y abuelo al parent jaja*/
+    display: grid;
+    place-items: center;
+    
+    background-color: #931631;
+}
+        .semicirculo{
+    margin-bottom: 20px;
+    width: 290px;
+    height: 150px;
+
+    background-color: #752741;
+
+    border-radius: 0 0 160px 160px;
+   
+}
+        .universidad{
+            padding-left: 10px;
+            font-weight: 700;
+            font-size: 25px;
+            letter-spacing: 10px;
+            color: #ebcba4
+                
+        }
+        .letras_pilares{
+            margin-top: -70px;
+            margin-left:25% ;
+            width: 160px;
+            height: 2
+            
+        }
+        
+        .linea {
+            position: absolute;
+            top: 19%;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #d9b385;
+}
+        .icono_usuario {
+            width: 40px;
+            
+        }
+        
+        .text_nav{
+            color: #ebcba4;
+            font-size:20px;
+            font-weight: 500;
+        }
+    
+
+/* MENÚ DE BIENVENIDA */
+.div12 {
+    grid-column: 2 / 6;
+    grid-row: 2;
+    
+    display: flex;
+    align-items: center;
+    
+    background-color: #931631;
+}
+
+/* CENTRO */
+.div13 {
+    grid-column: 2 / 5;
+    grid-row: 3 / 7;
+    background-color: #fafbf5;
+    
+    display: grid;
+    grid-template-columns: 350px 650px;
+    align-items: center;
+    justify-items: center;
+    min-height: 500px;
+}
+        .apartado_foto{
+            
+            width: 270px;
+            height: 500px;
+            justify-items: center;
+            background-color: rgb(228, 228, 228,0.4);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 1px 4px 10px #999;
+            
+        }
+        .foto_01{
+            width:160px;
+        
+        }
+        
+        .texto_apartado_foto{
+            align-self: flex-start;
+            margin: 5px 25px 1px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #7f7f7f;
+        }
+        .texto_foto{
+            font-size: 15px;
+            font-weight: 600;
+            color: #cd9e65;
+            
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        
+        }
+        
+
+
+/* ------------------------TABLA DEL PERFIL------------------------------- */
+
+    .tabla-alumno {
+    width: 100%;
+    margin: 30px;
+    height: 500px;
+    }
+
+    .tablas {
+    width: 100%;
+    }
+
+    #datos_general,
+    #datos_domicilio,
+    #datos_contactos {
+    display: none;
+    }
+        /*TABLA DESPLEGABLE GENERAL*/
+    #general:checked ~ #datos_general {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0px;
+    border: 1px solid white;
+    align-items: center;
+    }
+        /*TABLA DESPLEGABLE DOMICILIO*/
+    #domicilio:checked ~ #datos_domicilio {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0px;
+    border: 1px solid white;
+    align-items: center;
+    }
+        /*TABLA DESPLEGABLE CONTACTOS*/
+    #contacto:checked ~ #datos_contactos {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0px;
+    border: 1px solid white;
+    align-items: center;
+    }
+
+    input[type="radio"] {
+    display: none;
+    }
+
+    .pestañas {
+    display: flex;
+    gap: 0px;
+    margin-bottom: -1px;
+    }
+
+    .pestañas label {
+    padding: 15px;
+    width: 110px;
+    border: 1px solid #eaeaea;
+    background-color: #f4f3f3;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 1px 4px 10px #b9b8b8;
+    }
+
+    #general:checked ~ .pestañas label[for="general"],
+    #domicilio:checked ~ .pestañas label[for="domicilio"],
+    #contacto:checked ~ .pestañas label[for="contacto"] {
+    background-color: #931631;
+    color: white;
+    font-weight: bold;
+    
+    }
+
+    #datos_general dt,
+    #datos_general dd,
+    #datos_domicilio dt,
+    #datos_domicilio dd,
+    #datos_contactos dt,
+    #datos_contactos dd {
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    margin: 0px;
+    }
+
+    #datos_general dt,
+    #datos_domicilio dt,
+    #datos_contactos dt {
+    font-weight: 600;
+    background-color: #fafafa;
+    }
+
+    #datos_general dd,
+    #datos_domicilio dd,
+    #datos_contactos dd {
+    background-color: white;
+    }
+
+    #datos_general,
+    #datos_domicilio,
+    #datos_contactos {
+    margin: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 1px 4px 10px #b9b8b8;
+    }
+
+    .titulo-contacto {
+    grid-column: 1 / -1;
+    background-color: #931631;
+    text-align: center;
+    color: white;
+    padding: 8px;
+    }        
+/*--------------------------------------------------------------------------*/
+    /*BOTONES DE DEBAJO DE TABLA*/
+        .botones_02{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        
+        
+        }
+        .boton_imprimir{
+        font-size: 18px;
+        color: white;
+        background-color: #931631;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        }
+         
+        
+        .boton_guardar{
+        margin-left: auto;
+        font-size: 18px;
+        color: white;
+        background-color: #cd9e65;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+            
+        }
+        /*Con hover haces que cambie de color el boton cuando pones el mouse sobre el, es maravilloso el hover*/
+         .boton_imprimir:hover{
+            background-color: #e05775;
+            box-shadow: 0 4px 10px #999;
+        }
+        .boton_guardar:hover{
+            background-color: #f4ab52;
+            box-shadow: 0 4px 10px #999;
+        }
+        
+        .boton_editar{
+        margin-top: 50px;
+        font-size: 15px;
+        color: white;
+        background-color: #931631;
+        padding: 15px 20px;
+        border: 1px;
+        border-radius: 10px;
+        
+        
+        }
+        .boton_editar:hover{
+            background-color: #999;
+            box-shadow: 0 4px 10px #999;
+        }
+        /* IMAGEN LADO DERECHO */
+    .div14 {
+    grid-column: 5;
+    grid-row: 3 / 7;
+    
+    display: flex;
+    justify-content:flex-end;
+    }
+    
+    </style>
+    </head>
+    <body>
+    
+    <div class="parent">
+
+    <!-- MENÚ IZQUIERDO -->
+    <div class="div10">
+        <img class="logo_ciudad" src="Imagenes/logociudaddemexico-removebg-preview.png" alt="">
+        <img class="pilares" src="Imagenes/letras_pilares.png" alt="">
+        
+    <!--Menú desplegable-->
+    <div class="alumno" >
+        <img src="Imagenes/persona.png" alt="">
+            <a class="perfil_text" href="">Perfil del Alumno</a>
+    </div>
+    <div class="menu_desplegable">   
+    <details >
+        <summary>
+            <a href="">Tramites escolares</a>
+        </summary>
+        <ul>
+            <li><a href="">Historial Academico</a></li>
+            <li><a href="">Consulta Calificaciones</a></li>
+            <li><a href="">Solicitud de Trámite</a></li>
+            <li><a href="">Notificaciones</a></li>
+        </ul>
+        </details>
+        
+    <details >
+        <summary>
+            <a href="">Seguridad</a>
+        </summary>
+        <ul>
+            <li><a href="">Cambio de Nip</a></li>
+        </ul>
+        </details>
+    </div> 
+        
+    <p class="cerrar_sesion">Cerrar Sesion</p>        
+        </div>
+
+    <!-- PLECA SUPERIOR -->
+    <div class="div11">
+        
+        <div class="semicirculo">
+        <p class="universidad">UNIVERSIDAD</p>
+        <img class="letras_pilares" src="Imagenes/letras_pilares.png" alt="pilares">
+        </div>
+        
+    <!--LINEA-->
+    <div class="linea"></div> 
+        
+    </div>
+    
+
+    <!-- NAVEGADOR -->
+    <div class="div12">
+        <img class="icono_usuario" src="Imagenes/icono-persona.png" alt="">
+        <p class="text_nav">¡Bienvenida!,Diana A. Flores | Perfil del Alumno</p>
+    </div>
+
+    <!-- CENTRO -->
+    <main class="div13">
+    <!--CUADRO DE PERFIL DE ALUMNO -->
+        <aside class="apartado_foto">
+        <img class="foto_01" src="Imagenes/Persona_foto.PNG" alt="">
+        <p class="texto_foto"> <img src="Iconos/camara.png" alt="icono de camara">Editar foto</p>
+        <p class="texto_apartado_foto"><span style="color: #931631">Alumno:</span>Diana A. Flores</p>
+        <p class="texto_apartado_foto"><span style="color: #931631">Matricula:</span>313070959</p>
+        <p class="texto_apartado_foto"> <span style="color: #931631">Estatus:</span> Inscrito</p>
+        <button class="boton_editar">Editar Informacion</button>
+        </aside>
+
+    <section class="tabla-alumno">
+        
+    <!--Tablas pertenece al mismo grupo-->
+        <div class="tablas">
+    <!--Sacando los input de la class pestañas para que sirva el ~ de arriba y reconozca al hermano posterior-->
+        <input type="radio" name="tablas" id="general" checked> 
+        <input type="radio" name="tablas" id="domicilio">
+        <input type="radio" name="tablas" id="contacto">
+        
+            
+        <div class="pestañas">
+        <label for="general">General</label>
+        <label for="domicilio">Domicilio</label>
+         <label for="contacto">Contacto</label>
+        </div>
+            
+        
+        
+    <!--DATOS DE CADA TABLA-->    
+    
+            
+    <!--GENERAL-->
+    <dl id="datos_general">        
+    
+    <dt>Matricula:</dt>
+    <dd>313070959</dd>    
+        
+    <dt>Nombre:</dt>
+    <dd>Diana A. Flores</dd>
+        
+    <dt>Carrera:</dt>
+    <dd>Arquitectura</dd>
+        
+    <dt>Fecha de Nacimiento:</dt>
+    <dd>31/10/1992</dd>    
+   
+    <dt>Teléfono:</dt>
+    <dd>5528501569</dd>
+
+    <dt>NSS:</dt>
+    <dd>9863257813653331</dd>
+    
+    <dt>Curp:</dt>
+    <dd>FODA9785245401</dd>
+
+    <dt>Sexo:</dt>
+    <dd>Mujer</dd>
+
+    <dt>E-mail:</dt>
+    <dd>adror97@gmail.com</dd>
+
+    <dt>Nacionalidad:</dt>
+    <dd>Mexicana</dd>
+
+    <dt>Telefono:</dt>
+    <dd>26222506</dd>
+    </dl>
+    
+    <!--DOMICILIO--> 
+    <dl id="datos_domicilio">
+    
+    <dt>Calle:</dt>
+    <dd>Cristobal Hidalgo</dd>
+
+    <dt>Número:</dt>
+    <dd>52A</dd>
+
+    <dt>Colonia:</dt>
+    <dd>Benito Juarez</dd>
+
+    <dt>Municipio:</dt>
+    <dd>Coyoacan</dd>
+
+    <dt>Ciudad:</dt>
+    <dd>Mexico</dd>
+
+    <dt>C.P:</dt>
+    <dd>01786</dd>
+
+    </dl>
+    
+    <!--CONTACTOS-->
+    <dl id="datos_contactos">
+        
+    <div class="titulo-contacto">Primer contacto</div>
+        
+    <dt>Nombre completo:</dt>
+    <dd>Mariana Selene Flores </dd>
+   
+    <dt>Parentesco:</dt>
+    <dd>Hermana</dd>
+   
+    <dt>Domicilio</dt>
+    <dd>Amanecer Ranchero 58</dd>
+    
+    <dt>C.P:</dt>
+    <dd>18562</dd>
+    
+    <div class="titulo-contacto">Segundo contacto</div>
+        
+    <dt>Nombre completo:</dt>
+    <dd>Antonia de Jesus </dd>
+   
+    <dt>Parentesco:</dt>
+    <dd>Madre</dd>
+   
+    <dt>Domicilio</dt>
+    <dd>Av. de las Rosas 58B</dd>
+    
+    <dt>C.P:</dt>
+    <dd>26874</dd>
+        
+    
+    </dl>
+            
+        </div>  
+        
+        <div class="botones_02">
+        <button class="boton_imprimir">Imprimir</button>
+        <button class="boton_guardar">Guardar</button>
+        </div>
+    
+    </section>
+    
+    
+    </main>
+
+    <!-- IMAGEN DERECHA -->
+    <div class="div14">
+        <img class="imagen_derecha" src="Imagenes/UNIVERSIDAD_MOOKUP-removebg-preview.png" alt="">
+    </div>
+
+</div>  
+ </body>
+ <script>
+    </script>       
+</html>
+
+<a href=""></a>
